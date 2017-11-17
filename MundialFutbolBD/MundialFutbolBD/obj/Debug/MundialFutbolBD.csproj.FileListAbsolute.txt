@@ -1,1 +1,9 @@
 C:\Fabian\2017\Segundo Semestre\BD\Proyectos\Proyecto 2\GitHub\MundialFutbolBD\MundialFutbolBD\bin\Debug\MundialFutbolBD.exe.config
+C:\Fabian\2017\Segundo Semestre\BD\Proyectos\Proyecto 2\GitHub\MundialFutbolBD\MundialFutbolBD\bin\Debug\MundialFutbolBD.exe
+C:\Fabian\2017\Segundo Semestre\BD\Proyectos\Proyecto 2\GitHub\MundialFutbolBD\MundialFutbolBD\bin\Debug\MundialFutbolBD.pdb
+C:\Fabian\2017\Segundo Semestre\BD\Proyectos\Proyecto 2\GitHub\MundialFutbolBD\MundialFutbolBD\obj\Debug\MundialFutbolBD.csprojResolveAssemblyReference.cache
+C:\Fabian\2017\Segundo Semestre\BD\Proyectos\Proyecto 2\GitHub\MundialFutbolBD\MundialFutbolBD\obj\Debug\MundialFutbolBD.frmInicio.resources
+C:\Fabian\2017\Segundo Semestre\BD\Proyectos\Proyecto 2\GitHub\MundialFutbolBD\MundialFutbolBD\obj\Debug\MundialFutbolBD.Properties.Resources.resources
+C:\Fabian\2017\Segundo Semestre\BD\Proyectos\Proyecto 2\GitHub\MundialFutbolBD\MundialFutbolBD\obj\Debug\MundialFutbolBD.csproj.GenerateResource.Cache
+C:\Fabian\2017\Segundo Semestre\BD\Proyectos\Proyecto 2\GitHub\MundialFutbolBD\MundialFutbolBD\obj\Debug\MundialFutbolBD.exe
+C:\Fabian\2017\Segundo Semestre\BD\Proyectos\Proyecto 2\GitHub\MundialFutbolBD\MundialFutbolBD\obj\Debug\MundialFutbolBD.pdb

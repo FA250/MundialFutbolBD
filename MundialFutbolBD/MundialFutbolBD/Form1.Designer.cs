@@ -79,7 +79,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 66);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(752, 438);
+            this.dataGridView1.Size = new System.Drawing.Size(1076, 578);
             this.dataGridView1.TabIndex = 4;
             // 
             // frmInicio
@@ -87,13 +87,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(100)))), ((int)(((byte)(122)))));
-            this.ClientSize = new System.Drawing.Size(776, 516);
+            this.ClientSize = new System.Drawing.Size(1100, 656);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cmbOpReporte);
             this.Controls.Add(this.lbOpReporte);
             this.Controls.Add(this.cmbTipoReporte);
             this.Controls.Add(this.label1);
             this.Name = "frmInicio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reportes Mundial";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
