@@ -32,8 +32,9 @@
             this.cmbTipoReporte = new System.Windows.Forms.ComboBox();
             this.lbOpReporte = new System.Windows.Forms.Label();
             this.cmbOpReporte = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgvResultado = new System.Windows.Forms.DataGridView();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResultado)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -50,10 +51,17 @@
             // cmbTipoReporte
             // 
             this.cmbTipoReporte.FormattingEnabled = true;
+            this.cmbTipoReporte.Items.AddRange(new object[] {
+            "Equipos por confederacion",
+            "Informe Oficial Partido",
+            "Grupos y Clasificaciones",
+            "Tabla Posiciones",
+            "Tabla Goleadores"});
             this.cmbTipoReporte.Location = new System.Drawing.Point(94, 20);
             this.cmbTipoReporte.Name = "cmbTipoReporte";
             this.cmbTipoReporte.Size = new System.Drawing.Size(207, 21);
             this.cmbTipoReporte.TabIndex = 1;
+            this.cmbTipoReporte.SelectedIndexChanged += new System.EventHandler(this.cmbTipoReporte_SelectedIndexChanged);
             // 
             // lbOpReporte
             // 
@@ -73,14 +81,28 @@
             this.cmbOpReporte.Name = "cmbOpReporte";
             this.cmbOpReporte.Size = new System.Drawing.Size(193, 21);
             this.cmbOpReporte.TabIndex = 3;
+            this.cmbOpReporte.SelectedIndexChanged += new System.EventHandler(this.cmbOpReporte_SelectedIndexChanged);
             // 
-            // dataGridView1
+            // dgvResultado
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 66);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1076, 578);
-            this.dataGridView1.TabIndex = 4;
+            this.dgvResultado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvResultado.Location = new System.Drawing.Point(12, 66);
+            this.dgvResultado.Name = "dgvResultado";
+            this.dgvResultado.Size = new System.Drawing.Size(1076, 578);
+            this.dgvResultado.TabIndex = 4;
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(52)))), ((int)(((byte)(103)))));
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimir.Font = new System.Drawing.Font("Minion Pro", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(224)))), ((int)(((byte)(48)))));
+            this.btnImprimir.Location = new System.Drawing.Point(951, 13);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(126, 33);
+            this.btnImprimir.TabIndex = 5;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = false;
             // 
             // frmInicio
             // 
@@ -88,7 +110,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(100)))), ((int)(((byte)(122)))));
             this.ClientSize = new System.Drawing.Size(1100, 656);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnImprimir);
+            this.Controls.Add(this.dgvResultado);
             this.Controls.Add(this.cmbOpReporte);
             this.Controls.Add(this.lbOpReporte);
             this.Controls.Add(this.cmbTipoReporte);
@@ -96,8 +119,7 @@
             this.Name = "frmInicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reportes Mundial";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResultado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -109,7 +131,8 @@
         private System.Windows.Forms.ComboBox cmbTipoReporte;
         private System.Windows.Forms.Label lbOpReporte;
         private System.Windows.Forms.ComboBox cmbOpReporte;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvResultado;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }
 
