@@ -1,0 +1,1 @@
+'AFG','AIA','ALB','ALG','AND','ANG','ARG','ARM','ARU','ATG','AUS','AUT','AZE','BAH','BDI','BEL','BEN','BER','BFA','BHU','BLZ','BOL','BRA','CAM','CHI','COK','COL','FIJ','GUM','NCL','NZL','SOL'
