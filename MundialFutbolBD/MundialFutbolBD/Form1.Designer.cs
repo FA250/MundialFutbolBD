@@ -1,6 +1,6 @@
 ﻿namespace MundialFutbolBD
 {
-    partial class frmInicio
+    partial class frmReportes
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -97,14 +97,14 @@
             this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimir.Font = new System.Drawing.Font("Minion Pro", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(224)))), ((int)(((byte)(48)))));
-            this.btnImprimir.Location = new System.Drawing.Point(951, 13);
+            this.btnImprimir.Location = new System.Drawing.Point(977, 13);
             this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(126, 33);
+            this.btnImprimir.Size = new System.Drawing.Size(100, 33);
             this.btnImprimir.TabIndex = 5;
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.UseVisualStyleBackColor = false;
             // 
-            // frmInicio
+            // frmReportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -116,7 +116,7 @@
             this.Controls.Add(this.lbOpReporte);
             this.Controls.Add(this.cmbTipoReporte);
             this.Controls.Add(this.label1);
-            this.Name = "frmInicio";
+            this.Name = "frmReportes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reportes Mundial";
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultado)).EndInit();

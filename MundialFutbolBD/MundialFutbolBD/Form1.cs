@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace MundialFutbolBD
 {
-    public partial class frmInicio : Form
+    public partial class frmReportes : Form
     {
-        public frmInicio()
+        public frmReportes()
         {
             InitializeComponent();
         }
@@ -23,6 +23,8 @@ namespace MundialFutbolBD
 
         private void cmbTipoReporte_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lbOpReporte.Visible = true;
+            cmbOpReporte.Visible = true;
             cmbOpReporte.Items.Clear();
             if (cmbTipoReporte.SelectedIndex == 0)
             {
@@ -54,6 +56,16 @@ namespace MundialFutbolBD
                     cmbOpReporte.Items.Add(Grupo.ToString());
                 }                
                 cmbOpReporte.Items.Add("Todos");
+            }
+            else if (cmbTipoReporte.SelectedIndex == 3)
+            {
+                lbOpReporte.Visible = false;
+                cmbOpReporte.Visible = false;
+            }
+            else if (cmbTipoReporte.SelectedIndex == 4)
+            {
+                lbOpReporte.Visible = false;
+                cmbOpReporte.Visible = false;
             }
         }
 
