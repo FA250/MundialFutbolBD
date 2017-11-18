@@ -8,6 +8,31 @@ INTO Confederacion(codigo,nombre) VALUES('UEFA','Unión Europea de Fútbol Asociad
 SELECT 1 FROM DUAL;
 
 INSERT ALL
+INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Fase de Grupos','Grupo A')
+INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Fase de Grupos','Grupo B')
+INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Fase de Grupos','Grupo C')
+INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Fase de Grupos','Grupo D')
+INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Fase de Grupos','Grupo E')
+INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Fase de Grupos','Grupo F')
+INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Fase de Grupos','Grupo G')
+INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Fase de Grupos','Grupo H')
+INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Octavos de Final','NH')
+INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Cuartos de Final','NH')
+INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Semifinal','NH')
+INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Tercer Puesto','NH')
+INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Final','NH')
+SELECT 1 FROM DUAL;
+
+INSERT ALL
+INTO Sede(nombre_sede,nombre_estadio,capacidad) VALUES('Sede_1','Estadio_1',25000)
+INTO Sede(nombre_sede,nombre_estadio,capacidad) VALUES('Sede_2','Estadio_2',30000)
+INTO Sede(nombre_sede,nombre_estadio,capacidad) VALUES('Sede_3','Estadio_3',28000)
+INTO Sede(nombre_sede,nombre_estadio,capacidad) VALUES('Sede_4','Estadio_4',27000)
+SELECT 1 FROM DUAL;
+
+--------------------------------------------------------------Cargar Equipos y Jugadores----------------------------------------------------
+
+INSERT ALL
 INTO Persona(pasaporte,nombre,apellido1,apellido2) VALUES(801,'Entrenador-801','apellido1-801','apellido2-801')
 INTO Persona(pasaporte,nombre,apellido1,apellido2) VALUES(802,'Entrenador-802','apellido1-802','apellido2-802')
 INTO Persona(pasaporte,nombre,apellido1,apellido2) VALUES(803,'Entrenador-803','apellido1-803','apellido2-803')
@@ -1405,6 +1430,37 @@ INTO Federativo(pasaporte,puesto,cod_equipo) VALUES(1390,'Tesorero','SOL')
 INTO Federativo(pasaporte,puesto,cod_equipo) VALUES(1391,'Fiscal','SOL')
 INTO Federativo(pasaporte,puesto,cod_equipo) VALUES(1392,'Vocal','SOL')
 SELECT 1 FROM DUAL;
+
+INSERT ALL
+INTO Arbitro(pasaporte) VALUES(1401)
+INTO Arbitro(pasaporte) VALUES(1402)
+INTO Arbitro(pasaporte) VALUES(1403)
+INTO Arbitro(pasaporte) VALUES(1404)
+INTO Arbitro(pasaporte) VALUES(1405)
+INTO Arbitro(pasaporte) VALUES(1406)
+INTO Arbitro(pasaporte) VALUES(1407)
+INTO Arbitro(pasaporte) VALUES(1408)
+INTO Arbitro(pasaporte) VALUES(1409)
+INTO Arbitro(pasaporte) VALUES(1410)
+INTO Arbitro(pasaporte) VALUES(1411)
+INTO Arbitro(pasaporte) VALUES(1412)
+INTO Arbitro(pasaporte) VALUES(1413)
+INTO Arbitro(pasaporte) VALUES(1414)
+INTO Arbitro(pasaporte) VALUES(1415)
+INTO Arbitro(pasaporte) VALUES(1416)
+INTO Arbitro(pasaporte) VALUES(1417)
+INTO Arbitro(pasaporte) VALUES(1418)
+INTO Arbitro(pasaporte) VALUES(1419)
+INTO Arbitro(pasaporte) VALUES(1420)
+SELECT 1 FROM DUAL;
+
+INSERT INTO Persona 
+SELECT pasaporte,nombre,apellido1,apellido2 FROM tempJug;
+
+INSERT INTO Jugador 
+SELECT pasaporte,posicion,cod_equipo,numero_camiseta FROM tempJug;
+
+
 
 INSERT ALL
 INTO PARTIDO (NUMERO_PARTIDO, FECHA, HORA, GANADOR, CANTIDAD_AFICIONADOS, NOMBRE_SEDE, ETAPA_CAMPEONATO, GRUPO) 
@@ -11187,14 +11243,16 @@ into GOLES (PARTIDO,COD_EQUIPO,MINUTO,ANOTADOR) values (63,'AFG',63,12)
 into GOLES (PARTIDO,COD_EQUIPO,MINUTO,ANOTADOR) values (63,'NCL',48,708)
 into GOLES (PARTIDO,COD_EQUIPO,MINUTO,ANOTADOR) values (64,'BDI',40,347)
 into GOLES (PARTIDO,COD_EQUIPO,MINUTO,ANOTADOR) values (64,'BDI',48,348)
-into GOLES (PARTIDO,COD_EQUIPO,MINUTO,ANOTADOR) values (57,'COK',99,10)
-into GOLES (PARTIDO,COD_EQUIPO,MINUTO,ANOTADOR) values (57,'COK',111,11)
-into GOLES (PARTIDO,COD_EQUIPO,MINUTO,ANOTADOR) values (60,'BLZ',100,491)
-into GOLES (PARTIDO,COD_EQUIPO,MINUTO,ANOTADOR) values (60,'NCL',105,707)
 SELECT 1 FROM DUAL;
 
-insert into Extras_partidos(partido,tiempo_extra) values (57,30)
-insert into Extras_partidos(partido,tiempo_extra) values (60,30)
+
+insert into GOLES (PARTIDO,COD_EQUIPO,MINUTO,ANOTADOR) values (57,'AFG',99,10);
+insert into GOLES (PARTIDO,COD_EQUIPO,MINUTO,ANOTADOR) values (57,'AFG',111,11);
+insert into GOLES (PARTIDO,COD_EQUIPO,MINUTO,ANOTADOR) values (60,'BLZ',100,491);
+insert into GOLES (PARTIDO,COD_EQUIPO,MINUTO,ANOTADOR) values (60,'NCL',105,707);
+
+insert into Extras_partidos(partido,tiempo_extra) values (57,30);
+insert into Extras_partidos(partido,tiempo_extra) values (60,30);
 
 insert all
 into Penales (partido,numero_penal,lanzador,anotacion)values(60,1,487,'no')
@@ -11211,56 +11269,5 @@ into Penales (partido,numero_penal,lanzador,anotacion)values(60,11,492,'no')
 into Penales (partido,numero_penal,lanzador,anotacion)values(60,12,708,'si')
 SELECT 1 FROM DUAL;
 
-INSERT ALL
-INTO Arbitro(pasaporte) VALUES(1401)
-INTO Arbitro(pasaporte) VALUES(1402)
-INTO Arbitro(pasaporte) VALUES(1403)
-INTO Arbitro(pasaporte) VALUES(1404)
-INTO Arbitro(pasaporte) VALUES(1405)
-INTO Arbitro(pasaporte) VALUES(1406)
-INTO Arbitro(pasaporte) VALUES(1407)
-INTO Arbitro(pasaporte) VALUES(1408)
-INTO Arbitro(pasaporte) VALUES(1409)
-INTO Arbitro(pasaporte) VALUES(1410)
-INTO Arbitro(pasaporte) VALUES(1411)
-INTO Arbitro(pasaporte) VALUES(1412)
-INTO Arbitro(pasaporte) VALUES(1413)
-INTO Arbitro(pasaporte) VALUES(1414)
-INTO Arbitro(pasaporte) VALUES(1415)
-INTO Arbitro(pasaporte) VALUES(1416)
-INTO Arbitro(pasaporte) VALUES(1417)
-INTO Arbitro(pasaporte) VALUES(1418)
-INTO Arbitro(pasaporte) VALUES(1419)
-INTO Arbitro(pasaporte) VALUES(1420)
-SELECT 1 FROM DUAL;
 
-INSERT ALL
-INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Fase de Grupos','Grupo A')
-INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Fase de Grupos','Grupo B')
-INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Fase de Grupos','Grupo C')
-INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Fase de Grupos','Grupo D')
-INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Fase de Grupos','Grupo E')
-INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Fase de Grupos','Grupo F')
-INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Fase de Grupos','Grupo G')
-INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Fase de Grupos','Grupo H')
-INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Octavos de Final','NH')
-INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Cuartos de Final','NH')
-INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Semifinal','NH')
-INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Tercer Puesto','NH')
-INTO Fase_campeonato(etapa_campeonato,grupo) VALUES('Final','NH')
-SELECT 1 FROM DUAL;
 
-INSERT ALL
-INTO Sede(nombre_sede,nombre_estadio,capacidad) VALUES('Sede_1','Estadio_1',25000)
-INTO Sede(nombre_sede,nombre_estadio,capacidad) VALUES('Sede_2','Estadio_2',30000)
-INTO Sede(nombre_sede,nombre_estadio,capacidad) VALUES('Sede_3','Estadio_3',28000)
-INTO Sede(nombre_sede,nombre_estadio,capacidad) VALUES('Sede_4','Estadio_4',27000)
-SELECT 1 FROM DUAL;
-
---INSERT INTO tabla SELECT columna FROM tablaorigen WHERE ROWNUM <= numero;     selecionar primeras n filas
-
-INSERT INTO Persona 
-SELECT pasaporte,nombre,apellido1,apellido2 FROM tempJug;
-
-INSERT INTO Jugador 
-SELECT pasaporte,posicion,cod_equipo,numero_camiseta FROM tempJug;
