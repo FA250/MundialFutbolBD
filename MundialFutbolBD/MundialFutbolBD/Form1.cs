@@ -39,13 +39,14 @@ namespace MundialFutbolBD
             else if (cmbTipoReporte.SelectedIndex == 1)
             {
                 lbOpReporte.Text = "Partido";
-                //ArrayList Partidos = MD.();
-                /*foreach (String Partido in Partidos)
+                ArrayList Partidos = MD.Select_NPartidos_Disp();
+                cmbOpReporte.Items.Add("Todos");
+                foreach (String Partido in Partidos)
                 {
                     cmbOpReporte.Items.Add(Partido.ToString());
                 }
-                */
-                cmbOpReporte.Items.Add("Todos");
+                
+                
             }
             else if (cmbTipoReporte.SelectedIndex == 2)
             {
@@ -123,6 +124,58 @@ namespace MundialFutbolBD
                 Table.Columns.Add(new DataColumn("Cod Pais"));
                 Table.Columns.Add(new DataColumn("Nombre Pais"));
             }
+            else if (cmbTipoReporte.SelectedIndex == 1)
+            {
+                if (cmbOpReporte.Text == "Todos")
+                {
+                    tuplas = MD.Select_Todo_Informes_Partido();//Resultado equipos
+                    Table.Columns.Add(new DataColumn("Numero Partido"));
+                    Mostrar = true;
+                }
+                else
+                {
+                    String Partido = cmbOpReporte.Text.ToString();
+                    tuplas = MD.Select_Informe_Partido(Partido);//Resultado equipos
+                    Mostrar = true;
+                }
+                Table.Columns.Add(new DataColumn("Fecha"));
+                Table.Columns.Add(new DataColumn("Hora"));
+                Table.Columns.Add(new DataColumn("Etapa Campeonato"));
+                Table.Columns.Add(new DataColumn("Grupo"));
+                Table.Columns.Add(new DataColumn("Nombre Estadio"));
+                Table.Columns.Add(new DataColumn("Cantidad Aficionados"));
+                Table.Columns.Add(new DataColumn("Equipo 1"));
+                Table.Columns.Add(new DataColumn("Puntos Equipo 1"));
+                Table.Columns.Add(new DataColumn("Goles Equipo 1"));
+                Table.Columns.Add(new DataColumn("Equipo 2"));
+                Table.Columns.Add(new DataColumn("Puntos Equipo 2"));
+                Table.Columns.Add(new DataColumn("Goles Equipo 2"));
+                Table.Columns.Add(new DataColumn("Ganador"));
+            }
+            else if (cmbTipoReporte.SelectedIndex == 2)
+            {
+                if (cmbOpReporte.Text == "Todos")
+                {
+                    tuplas = MD.Select_Clasificacion_Todos_Grupos();//Resultado equipos
+                    Table.Columns.Add(new DataColumn("Grupo"));
+                    Mostrar = true;
+                }
+                else
+                {
+                    String Grupo = cmbOpReporte.Text.ToString();
+                    tuplas = MD.Select_Clasificacion_Grupo(Grupo);//Resultado equipos
+                    Mostrar = true;
+                }
+                Table.Columns.Add(new DataColumn("Equipo"));
+                Table.Columns.Add(new DataColumn("Puntos"));
+                Table.Columns.Add(new DataColumn("PJ"));
+                Table.Columns.Add(new DataColumn("PG"));
+                Table.Columns.Add(new DataColumn("PE"));
+                Table.Columns.Add(new DataColumn("PP"));
+                Table.Columns.Add(new DataColumn("GF"));
+                Table.Columns.Add(new DataColumn("GC"));
+                Table.Columns.Add(new DataColumn("DIF"));
+            }
 
             if (Mostrar)
             {
@@ -134,7 +187,14 @@ namespace MundialFutbolBD
                     numeroColumna = 0;
                     foreach (String item in atributos)
                     {
-                        Reglon[numeroColumna] = item.ToString();
+                        if (item.ToString() == "XXX")
+                        {
+                            Reglon[numeroColumna] = "Empate";
+                        }
+                        else
+                        {
+                            Reglon[numeroColumna] = item.ToString();
+                        }
                         numeroColumna++;
                     }
 
