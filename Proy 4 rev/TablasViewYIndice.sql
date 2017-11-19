@@ -3,6 +3,7 @@ drop index Titulares_indx;
 drop view VistaPartidos;
 drop view VistaEquipos;
 drop view VistaEquiposXPartidos;
+drop view Diccionario;
 
 CREATE INDEX Jugadores_indx
    ON Jugador (pasaporte,cod_equipo);
@@ -64,6 +65,7 @@ ORDER BY COD_EQUIPO,Funcion
 create view VistaEquiposXPartidos as
 select 
 enf.COD_EQUIPO COD_EQUIPO,
+eq.NOMBRE_PAIS,
 enf.PARTIDO PARTIDO,
 PASAPORTE,
 NOMBRE,
@@ -92,5 +94,16 @@ left join TARJETAS_AMARILLAS ta
 on ta.COD_EQUIPO=enf.COD_EQUIPO and enf.PARTIDO = ta.PARTIDO  and ta.amonestado = jug.PASAPORTE
 left join TARJETAS_ROJAS tr 
 on tr.COD_EQUIPO=enf.COD_EQUIPO and enf.PARTIDO = tr.PARTIDO  and tr.amonestado = jug.PASAPORTE
+left join Equipo eq
+on eq.COD_PAIS=enf.COD_EQUIPO
 ;
 
+
+create view Diccionario as
+select tdt.TABLE_NAME, tdt.COLUMN_NAME, tdt.DATA_TYPE,DATA_LENGTH, DATA_PRECISION,DATA_SCALE, COLUMN_ID, tpk.Tipo_llave as Llave_secundaria,tfk.Tipo_llave as Llave_primaria from USER_TAB_COLUMNS tdt
+left join
+(select uscc.TABLE_NAME as Tabla,uscc.COLUMN_NAME as Columna,'Foranea' as Tipo_llave from User_Constraints uscn inner join User_cons_columns uscc on uscc.CONSTRAINT_NAME = uscn.CONSTRAINT_NAME where constraint_type = 'P') tpk
+on tdt.TABLE_NAME = tpk.Tabla and tdt.COLUMN_NAME = tpk.Columna
+left join
+(select uscc.TABLE_NAME as Tabla,uscc.COLUMN_NAME as Columna,'Primaria' as Tipo_llave from User_Constraints uscn inner join User_cons_columns uscc on uscc.CONSTRAINT_NAME = uscn.CONSTRAINT_NAME where constraint_type = 'R') tfk
+on tdt.TABLE_NAME = tfk.Tabla and tdt.COLUMN_NAME = tfk.Columna;
