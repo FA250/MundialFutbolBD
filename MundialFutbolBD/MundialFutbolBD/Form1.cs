@@ -66,6 +66,36 @@ namespace MundialFutbolBD
             {
                 lbOpReporte.Visible = false;
                 cmbOpReporte.Visible = false;
+
+                DataTable Table = new DataTable();
+                DataRow Reglon;
+                ArrayList tuplas = null;
+
+                tuplas = MD.Select_Goleadores();
+                Table.Columns.Add(new DataColumn("Posición"));
+                Table.Columns.Add(new DataColumn("Nombre"));
+                Table.Columns.Add(new DataColumn("Apellido 1"));
+                Table.Columns.Add(new DataColumn("Apellido 2"));
+                Table.Columns.Add(new DataColumn("Equipo"));
+                Table.Columns.Add(new DataColumn("Goles"));
+
+                int numeroColumna = 0;
+                int numeroFila = 1;
+                foreach (ArrayList atributos in tuplas)
+                {
+                    Reglon = Table.NewRow();
+                    numeroColumna = 1;
+                    Reglon[0] = numeroFila;
+                    foreach (String item in atributos)
+                    {
+                        Reglon[numeroColumna] = item.ToString();
+                        numeroColumna++;
+                    }
+                    numeroFila++;
+                    Table.Rows.Add(Reglon);
+                }
+
+                dgvResultado.DataSource = Table;
             }
         }
 
@@ -96,6 +126,7 @@ namespace MundialFutbolBD
 
             if (Mostrar)
             {
+ 
                 int numeroColumna = 0;
                 foreach (ArrayList atributos in tuplas)
                 {

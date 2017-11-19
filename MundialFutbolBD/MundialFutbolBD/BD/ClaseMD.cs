@@ -247,5 +247,41 @@ namespace MundialFutbolBD.BD
 
             return tuplas;//devuelve los datos necesarios
         }
+
+        //---------------- Seleccionar goleadores ----------------
+        public ArrayList Select_Goleadores()
+        {
+            ArrayList tuplas = new ArrayList();
+            ArrayList atributos = new ArrayList();
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "select nombre,apellido1,apellido2,nombre_pais, count(anotador) as cant_goles from goles join persona on goles.ANOTADOR=persona.PASAPORTE join equipo on equipo.COD_PAIS=goles.COD_EQUIPO group by nombre,apellido1,apellido2,nombre_pais order by count(anotador) desc,nombre,apellido1,apellido2";
+            //consulta = "EXEC EQUIPOS_CONFEDERACION ?";//numero de parametros
+            conexion.annadir_consulta(consulta);
+            //conexion.annadir_parametro(confederacion, 2);
+
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            //Buscar los campos solicitados
+            while (Contenedor.Read())
+            {
+                atributos.Add(Contenedor["NOMBRE"].ToString());
+                atributos.Add(Contenedor["APELLIDO1"].ToString());
+                atributos.Add(Contenedor["APELLIDO2"].ToString());
+                atributos.Add(Contenedor["NOMBRE_PAIS"].ToString());
+                atributos.Add(Contenedor["CANT_GOLES"].ToString());
+                
+                tuplas.Add(atributos);
+                atributos = new ArrayList();
+            }//CONTENEDOR READ
+
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados
+
+            return tuplas;//devuelve los datos necesarios
+        }
     }
 }
