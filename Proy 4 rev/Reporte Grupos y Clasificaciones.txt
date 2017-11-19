@@ -1,0 +1,59 @@
+select Nombre_pais,sum(Puntos) as Puntos,sum(PJ) as PJ,sum(PG) as PG,sum(PE) as PE,sum(PP) as PP, sum(GF) as GF,sum(GC) as GC, sum(GF) - sum(GC) as Dif
+from    
+    ((select E.Nombre_Pais,Sum(VP1.PUNTOS_1) as Puntos,
+        (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 and vp2.grupo='Grupo A') as PJ,
+        (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 and vp2.grupo='Grupo A' and vp2.Ganador=VP1.Equipo_1) as PG,
+        (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 and vp2.grupo='Grupo A' and vp2.Ganador='XXX') as PE,
+        (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 and vp2.grupo='Grupo A' and vp2.Ganador!=VP1.Equipo_1) as PP,
+        sum(VP1.NGOLES_1) as GF,
+        sum(VP1.NGOLES_2) as GC        
+        from VISTAPARTIDOS VP1
+        join Equipo E on VP1.EQUIPO_1=E.COD_PAIS 
+        where VP1.grupo='Grupo A'
+        GROUP BY E.Nombre_Pais,VP1.EQUIPO_1)
+Union
+    (select E.Nombre_Pais,Sum(VP1.PUNTOS_2) as Puntos,
+        (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 and vp2.grupo='Grupo A') as PJ,
+        (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 and vp2.grupo='Grupo A' and vp2.Ganador=VP1.Equipo_2) as PG,
+        (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 and vp2.grupo='Grupo A' and vp2.Ganador='XXX') as PE,
+        (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 and vp2.grupo='Grupo A' and vp2.Ganador!=VP1.Equipo_2) as PP,
+        sum(VP1.NGOLES_2) as GF,
+        sum(VP1.NGOLES_1) as GC        
+        from VISTAPARTIDOS VP1
+        join Equipo E on VP1.EQUIPO_2=E.COD_PAIS 
+        where VP1.grupo='Grupo A'
+        GROUP BY E.Nombre_Pais,VP1.EQUIPO_2))
+         GROUP BY Nombre_Pais
+         Order By Puntos desc, DIF desc, GF desc, Nombre_pais
+
+
+
+
+
+ --Todos los grupos        
+select Grupo,Nombre_pais,sum(Puntos) as Puntos,sum(PJ) as PJ,sum(PG) as PG,sum(PE) as PE,sum(PP) as PP, sum(GF) as GF,sum(GC) as GC, sum(GF) - sum(GC) as Dif
+from    
+    ((select VP1.Grupo,E.Nombre_Pais,Sum(VP1.PUNTOS_1) as Puntos,
+        (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 ) as PJ,
+        (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 and vp2.Ganador=VP1.Equipo_1) as PG,
+        (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 and vp2.Ganador='XXX') as PE,
+        (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 and vp2.Ganador!=VP1.Equipo_1) as PP,
+        sum(VP1.NGOLES_1) as GF,
+        sum(VP1.NGOLES_2) as GC        
+        from VISTAPARTIDOS VP1
+        join Equipo E on VP1.EQUIPO_1=E.COD_PAIS 
+        GROUP BY E.Nombre_Pais,VP1.EQUIPO_1,VP1.Grupo)
+Union
+    (select VP1.Grupo,E.Nombre_Pais,Sum(VP1.PUNTOS_2) as Puntos,
+        (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2) as PJ,
+        (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 and vp2.Ganador=VP1.Equipo_2) as PG,
+        (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 and vp2.Ganador='XXX') as PE,
+        (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 and vp2.Ganador!=VP1.Equipo_2) as PP,
+        sum(VP1.NGOLES_2) as GF,
+        sum(VP1.NGOLES_1) as GC        
+        from VISTAPARTIDOS VP1
+        join Equipo E on VP1.EQUIPO_2=E.COD_PAIS 
+        GROUP BY E.Nombre_Pais,VP1.EQUIPO_2,VP1.Grupo))
+        where grupo!='NH'
+         GROUP BY Nombre_Pais, Grupo
+         Order By Grupo,Puntos desc, DIF desc, GF desc, Nombre_pais
