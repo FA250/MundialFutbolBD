@@ -44,8 +44,7 @@ namespace MundialFutbolBD
                 foreach (String Partido in Partidos)
                 {
                     cmbOpReporte.Items.Add(Partido.ToString());
-                }
-                
+                }                
                 
             }
             else if (cmbTipoReporte.SelectedIndex == 2)
@@ -62,6 +61,40 @@ namespace MundialFutbolBD
             {
                 lbOpReporte.Visible = false;
                 cmbOpReporte.Visible = false;
+
+                DataTable Table = new DataTable();
+                DataRow Reglon;
+                ArrayList tuplas = null;
+
+                tuplas = MD.Select_Tabla_Posiciones();
+                Table.Columns.Add(new DataColumn("Posición"));
+                Table.Columns.Add(new DataColumn("Equipo"));
+                Table.Columns.Add(new DataColumn("Puntos"));
+                Table.Columns.Add(new DataColumn("PJ"));
+                Table.Columns.Add(new DataColumn("PG"));
+                Table.Columns.Add(new DataColumn("PE"));
+                Table.Columns.Add(new DataColumn("PP"));
+                Table.Columns.Add(new DataColumn("GF"));
+                Table.Columns.Add(new DataColumn("GC"));
+                Table.Columns.Add(new DataColumn("DIF"));
+
+                int numeroColumna = 0;
+                int numeroFila = 1;
+                foreach (ArrayList atributos in tuplas)
+                {
+                    Reglon = Table.NewRow();
+                    numeroColumna = 1;
+                    Reglon[0] = numeroFila;
+                    foreach (String item in atributos)
+                    {
+                        Reglon[numeroColumna] = item.ToString();
+                        numeroColumna++;
+                    }
+                    numeroFila++;
+                    Table.Rows.Add(Reglon);
+                }
+
+                dgvResultado.DataSource = Table;
             }
             else if (cmbTipoReporte.SelectedIndex == 4)
             {

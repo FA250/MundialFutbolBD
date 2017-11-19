@@ -476,5 +476,43 @@ namespace MundialFutbolBD.BD
 
             return tuplas;//devuelve los datos necesarios
         }
+
+        //---------------- Seleccionar tabla posiciones ----------------
+        public ArrayList Select_Tabla_Posiciones()
+        {
+            ArrayList tuplas = new ArrayList();
+            ArrayList atributos = new ArrayList();
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "select Nombre_pais,sum(Puntos) as Puntos,sum(PJ) as PJ,sum(PG) as PG,sum(PE) as PE,sum(PP) as PP, sum(GF) as GF,sum(GC) as GC, sum(GF) - sum(GC) as Dif from ((select E.Nombre_Pais,Sum(VP1.PUNTOS_1) as Puntos, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 ) as PJ, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 and vp2.Ganador=VP1.Equipo_1) as PG, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 and vp2.Ganador='XXX') as PE, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 and vp2.Ganador!=VP1.Equipo_1) as PP, sum(VP1.NGOLES_1) as GF, sum(VP1.NGOLES_2) as GC from VISTAPARTIDOS VP1 join Equipo E on VP1.EQUIPO_1=E.COD_PAIS GROUP BY E.Nombre_Pais,VP1.EQUIPO_1) Union (select E.Nombre_Pais,Sum(VP1.PUNTOS_2) as Puntos, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 ) as PJ, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 and vp2.Ganador=VP1.Equipo_2) as PG, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 and vp2.Ganador='XXX') as PE, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 and vp2.Ganador!=VP1.Equipo_2) as PP, sum(VP1.NGOLES_2) as GF, sum(VP1.NGOLES_1) as GC from VISTAPARTIDOS VP1 join Equipo E on VP1.EQUIPO_2=E.COD_PAIS GROUP BY E.Nombre_Pais,VP1.EQUIPO_2)) GROUP BY Nombre_Pais Order By Puntos desc, DIF desc, GF desc, Nombre_pais";
+
+            conexion.annadir_consulta(consulta);
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            //Buscar los campos solicitados
+            while (Contenedor.Read())
+            {
+                atributos.Add(Contenedor["NOMBRE_PAIS"].ToString());
+                atributos.Add(Contenedor["PUNTOS"].ToString());
+                atributos.Add(Contenedor["PJ"].ToString());
+                atributos.Add(Contenedor["PG"].ToString());
+                atributos.Add(Contenedor["PE"].ToString());
+                atributos.Add(Contenedor["PP"].ToString());
+                atributos.Add(Contenedor["GF"].ToString());
+                atributos.Add(Contenedor["GC"].ToString());
+                atributos.Add(Contenedor["DIF"].ToString());
+
+                tuplas.Add(atributos);
+                atributos = new ArrayList();
+            }//CONTENEDOR READ
+
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados
+
+            return tuplas;//devuelve los datos necesarios
+        }
     }
 }
