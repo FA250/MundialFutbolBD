@@ -546,5 +546,119 @@ namespace MundialFutbolBD.BD
 
             return tuplas;//devuelve los datos necesarios
         }
+
+
+        //---------------- Seleccionar equipo para verificar si existe ----------------
+        public ArrayList Select_Existe_Equipo(String Equipo)
+        {
+            ArrayList atributos = new ArrayList();
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "select * from equipo where cod_pais='" + Equipo + "'";
+
+            conexion.annadir_consulta(consulta);
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            //Buscar los campos solicitados
+            while (Contenedor.Read())
+            {
+                atributos.Add(Contenedor["COD_PAIS"].ToString());
+                atributos.Add(Contenedor["NOMBRE_PAIS"].ToString());
+                atributos.Add(Contenedor["COD_CONFEDERACION"].ToString());
+
+            }//CONTENEDOR READ
+
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados
+
+            return atributos;//devuelve los datos necesarios
+        }
+
+        //---------------- Insertar equipo nuevo ----------------
+        public bool Insert_Equipo(String CodPais, String NombrePais, String Confederacion)
+        {
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "Insert into Equipo(COD_Pais,Nombre_pais,Cod_confederacion) values ('"+CodPais+"','"+NombrePais+"','"+Confederacion+"')";
+
+            conexion.annadir_consulta(consulta);
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            if (Contenedor == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+
+                while (Contenedor.Read()) { }//CONTENEDOR READ
+            }
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados            
+        }
+
+        //---------------- Eliminar equipo ----------------
+        public bool Delete_Equipo(String CodPais)
+        {
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "Delete Equipo where COD_PAIS='" + CodPais+"'";
+
+            conexion.annadir_consulta(consulta);
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            if (Contenedor == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+
+                while (Contenedor.Read()) { }//CONTENEDOR READ
+            }
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados            
+        }
+
+        //---------------- Actualizar equipo ----------------
+        public bool Update_Equipo(String CodPais, String NombrePais, String Confederacion)
+        {
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "Update Equipo set Nombre_pais='"+NombrePais+"',Cod_confederacion='"+Confederacion+"' where COD_PAIS='" + CodPais + "'";
+
+            conexion.annadir_consulta(consulta);
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            if (Contenedor == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+
+                while (Contenedor.Read()) { }//CONTENEDOR READ
+            }
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados            
+        }
+
+
+       
     }
 }
