@@ -238,5 +238,11 @@ namespace MundialFutbolBD
             }
 
         }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            ClsPrint _ClsPrint = new ClsPrint(dgvResultado, "Reporte Mundial Fútbol");
+            _ClsPrint.PrintForm();
+        }
     }
 }

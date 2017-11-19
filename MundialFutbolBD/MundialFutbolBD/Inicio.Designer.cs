@@ -104,7 +104,6 @@
             this.btnAyuda.TabIndex = 6;
             this.btnAyuda.Text = "Ayuda";
             this.btnAyuda.UseVisualStyleBackColor = false;
-            this.btnAyuda.Click += new System.EventHandler(this.btnPartidos_Click);
             // 
             // btnDiccionarioDatos
             // 
@@ -135,6 +134,7 @@
             this.Name = "frmInicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmInicio_FormClosing);
             this.ResumeLayout(false);
 
         }

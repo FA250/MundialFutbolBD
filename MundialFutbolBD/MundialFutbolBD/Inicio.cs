@@ -45,5 +45,10 @@ namespace MundialFutbolBD
             frmCRUDEquipos Equipos = new frmCRUDEquipos();
             Equipos.Show();
         }
+
+        private void frmInicio_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
