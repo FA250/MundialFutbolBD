@@ -9,3 +9,4 @@ C:\Fabian\2017\Segundo Semestre\BD\Proyectos\Proyecto 2\GitHub\MundialFutbolBD\M
 C:\Fabian\2017\Segundo Semestre\BD\Proyectos\Proyecto 2\GitHub\MundialFutbolBD\MundialFutbolBD\obj\Debug\MundialFutbolBD.pdb
 C:\Fabian\2017\Segundo Semestre\BD\Proyectos\Proyecto 2\GitHub\MundialFutbolBD\MundialFutbolBD\obj\Debug\MundialFutbolBD.frmReportes.resources
 C:\Fabian\2017\Segundo Semestre\BD\Proyectos\Proyecto 2\GitHub\MundialFutbolBD\MundialFutbolBD\obj\Debug\MundialFutbolBD.frmCRUDPartidos.resources
+C:\Fabian\2017\Segundo Semestre\BD\Proyectos\Proyecto 2\GitHub\MundialFutbolBD\MundialFutbolBD\obj\Debug\MundialFutbolBD.frmDiccionarioDatos.resources

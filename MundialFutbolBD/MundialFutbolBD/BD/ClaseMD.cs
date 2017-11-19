@@ -139,5 +139,113 @@ namespace MundialFutbolBD.BD
 
             return tuplas;//devuelve los datos necesarios
         }
+
+        //---------------- Seleccionar tablas ----------------
+        public ArrayList Select_Tablas()
+        {
+            ArrayList tuplas = new ArrayList();
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "select distinct Table_name from diccionario where Table_name not like 'DEMO%' and Table_name not like 'APEX%' and Table_name not like 'TEMP%' and Table_name !='EMP' and Table_name !='DEPT' order by TABLE_NAME";
+            //consulta = "EXEC EQUIPOS_CONFEDERACION ?";//numero de parametros
+            conexion.annadir_consulta(consulta);
+            //conexion.annadir_parametro(confederacion, 2);
+
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            //Buscar los campos solicitados
+            while (Contenedor.Read())
+            {
+                tuplas.Add(Contenedor["Table_name"].ToString());
+            }//CONTENEDOR READ
+
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados
+
+            return tuplas;//devuelve los datos necesarios
+        }
+
+        //---------------- Seleccionar Diccionario datos por tabla ----------------
+        public ArrayList Select_DD_Tabla(String Tabla)
+        {
+            ArrayList tuplas = new ArrayList();
+            ArrayList atributos = new ArrayList();
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "select * from diccionario where TABLE_NAME='"+Tabla+"'";
+            //consulta = "EXEC EQUIPOS_CONFEDERACION ?";//numero de parametros
+            conexion.annadir_consulta(consulta);
+            //conexion.annadir_parametro(confederacion, 2);
+
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            //Buscar los campos solicitados
+            while (Contenedor.Read())
+            {
+                atributos.Add(Contenedor["TABLE_NAME"].ToString());
+                atributos.Add(Contenedor["COLUMN_NAME"].ToString());
+                atributos.Add(Contenedor["DATA_TYPE"].ToString());
+                atributos.Add(Contenedor["DATA_LENGTH"].ToString());
+                atributos.Add(Contenedor["DATA_PRECISION"].ToString());
+                atributos.Add(Contenedor["DATA_SCALE"].ToString());
+                atributos.Add(Contenedor["COLUMN_ID"].ToString());
+                atributos.Add(Contenedor["LLAVE_FORANEA"].ToString());
+                atributos.Add(Contenedor["LLAVE_PRIMARIA"].ToString());
+                
+                tuplas.Add(atributos);
+                atributos = new ArrayList();
+            }//CONTENEDOR READ
+
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados
+
+            return tuplas;//devuelve los datos necesarios
+        }
+
+        //---------------- Seleccionar TODO Diccionario datos----------------
+        public ArrayList Select_Todo_DD()
+        {
+            ArrayList tuplas = new ArrayList();
+            ArrayList atributos = new ArrayList();
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "select * from diccionario where Table_name not like 'DEMO%' and Table_name not like 'APEX%' and Table_name not like 'TEMP%' and Table_name !='EMP' and Table_name !='DEPT' order by TABLE_NAME";
+            //consulta = "EXEC EQUIPOS_CONFEDERACION ?";//numero de parametros
+            conexion.annadir_consulta(consulta);
+            //conexion.annadir_parametro(confederacion, 2);
+
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            //Buscar los campos solicitados
+            while (Contenedor.Read())
+            {
+                atributos.Add(Contenedor["TABLE_NAME"].ToString());
+                atributos.Add(Contenedor["COLUMN_NAME"].ToString());
+                atributos.Add(Contenedor["DATA_TYPE"].ToString());
+                atributos.Add(Contenedor["DATA_LENGTH"].ToString());
+                atributos.Add(Contenedor["DATA_PRECISION"].ToString());
+                atributos.Add(Contenedor["DATA_SCALE"].ToString());
+                atributos.Add(Contenedor["COLUMN_ID"].ToString());
+                atributos.Add(Contenedor["LLAVE_FORANEA"].ToString());
+                atributos.Add(Contenedor["LLAVE_PRIMARIA"].ToString());
+
+                tuplas.Add(atributos);
+                atributos = new ArrayList();
+            }//CONTENEDOR READ
+
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados
+
+            return tuplas;//devuelve los datos necesarios
+        }
     }
 }

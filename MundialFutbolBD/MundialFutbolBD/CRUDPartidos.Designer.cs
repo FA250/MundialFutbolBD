@@ -70,7 +70,7 @@
             this.btnVerificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVerificar.Font = new System.Drawing.Font("Minion Pro", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerificar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(224)))), ((int)(((byte)(48)))));
-            this.btnVerificar.Location = new System.Drawing.Point(271, 514);
+            this.btnVerificar.Location = new System.Drawing.Point(39, 436);
             this.btnVerificar.Name = "btnVerificar";
             this.btnVerificar.Size = new System.Drawing.Size(92, 33);
             this.btnVerificar.TabIndex = 6;
@@ -84,7 +84,7 @@
             this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificar.Font = new System.Drawing.Font("Minion Pro", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(224)))), ((int)(((byte)(48)))));
-            this.btnModificar.Location = new System.Drawing.Point(369, 514);
+            this.btnModificar.Location = new System.Drawing.Point(137, 436);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(99, 33);
             this.btnModificar.TabIndex = 7;
@@ -98,7 +98,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Minion Pro", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(224)))), ((int)(((byte)(48)))));
-            this.button1.Location = new System.Drawing.Point(474, 514);
+            this.button1.Location = new System.Drawing.Point(242, 436);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(99, 33);
             this.button1.TabIndex = 7;
@@ -112,7 +112,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Minion Pro", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(224)))), ((int)(((byte)(48)))));
-            this.button2.Location = new System.Drawing.Point(579, 514);
+            this.button2.Location = new System.Drawing.Point(347, 436);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(99, 33);
             this.button2.TabIndex = 7;
@@ -124,7 +124,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(224)))), ((int)(((byte)(48)))));
-            this.label1.Location = new System.Drawing.Point(234, 60);
+            this.label1.Location = new System.Drawing.Point(44, 95);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(157, 28);
             this.label1.TabIndex = 8;
@@ -132,7 +132,7 @@
             // 
             // txtNumPartido
             // 
-            this.txtNumPartido.Location = new System.Drawing.Point(431, 65);
+            this.txtNumPartido.Location = new System.Drawing.Point(241, 100);
             this.txtNumPartido.Name = "txtNumPartido";
             this.txtNumPartido.Size = new System.Drawing.Size(238, 20);
             this.txtNumPartido.TabIndex = 9;
@@ -142,7 +142,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(224)))), ((int)(((byte)(48)))));
-            this.label2.Location = new System.Drawing.Point(234, 99);
+            this.label2.Location = new System.Drawing.Point(44, 134);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 28);
             this.label2.TabIndex = 8;
@@ -150,7 +150,7 @@
             // 
             // dttmpckFecha
             // 
-            this.dttmpckFecha.Location = new System.Drawing.Point(431, 102);
+            this.dttmpckFecha.Location = new System.Drawing.Point(241, 137);
             this.dttmpckFecha.Name = "dttmpckFecha";
             this.dttmpckFecha.Size = new System.Drawing.Size(238, 20);
             this.dttmpckFecha.TabIndex = 10;
@@ -160,7 +160,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(224)))), ((int)(((byte)(48)))));
-            this.label3.Location = new System.Drawing.Point(234, 136);
+            this.label3.Location = new System.Drawing.Point(44, 171);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 28);
             this.label3.TabIndex = 8;
@@ -168,7 +168,7 @@
             // 
             // txtHora
             // 
-            this.txtHora.Location = new System.Drawing.Point(431, 141);
+            this.txtHora.Location = new System.Drawing.Point(241, 176);
             this.txtHora.Name = "txtHora";
             this.txtHora.Size = new System.Drawing.Size(238, 20);
             this.txtHora.TabIndex = 9;
@@ -178,7 +178,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(224)))), ((int)(((byte)(48)))));
-            this.label4.Location = new System.Drawing.Point(234, 174);
+            this.label4.Location = new System.Drawing.Point(44, 209);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 28);
             this.label4.TabIndex = 8;
@@ -186,7 +186,7 @@
             // 
             // txtGanador
             // 
-            this.txtGanador.Location = new System.Drawing.Point(431, 179);
+            this.txtGanador.Location = new System.Drawing.Point(241, 214);
             this.txtGanador.Name = "txtGanador";
             this.txtGanador.Size = new System.Drawing.Size(238, 20);
             this.txtGanador.TabIndex = 9;
@@ -196,7 +196,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(224)))), ((int)(((byte)(48)))));
-            this.label5.Location = new System.Drawing.Point(234, 212);
+            this.label5.Location = new System.Drawing.Point(44, 247);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(196, 28);
             this.label5.TabIndex = 8;
@@ -204,7 +204,7 @@
             // 
             // txtCantidadAficionados
             // 
-            this.txtCantidadAficionados.Location = new System.Drawing.Point(431, 217);
+            this.txtCantidadAficionados.Location = new System.Drawing.Point(241, 252);
             this.txtCantidadAficionados.Name = "txtCantidadAficionados";
             this.txtCantidadAficionados.Size = new System.Drawing.Size(238, 20);
             this.txtCantidadAficionados.TabIndex = 9;
@@ -214,7 +214,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(224)))), ((int)(((byte)(48)))));
-            this.label6.Location = new System.Drawing.Point(234, 250);
+            this.label6.Location = new System.Drawing.Point(44, 285);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(132, 28);
             this.label6.TabIndex = 8;
@@ -222,7 +222,7 @@
             // 
             // txtNombreSede
             // 
-            this.txtNombreSede.Location = new System.Drawing.Point(431, 255);
+            this.txtNombreSede.Location = new System.Drawing.Point(241, 290);
             this.txtNombreSede.Name = "txtNombreSede";
             this.txtNombreSede.Size = new System.Drawing.Size(238, 20);
             this.txtNombreSede.TabIndex = 9;
@@ -232,7 +232,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(224)))), ((int)(((byte)(48)))));
-            this.label7.Location = new System.Drawing.Point(234, 288);
+            this.label7.Location = new System.Drawing.Point(44, 323);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(175, 28);
             this.label7.TabIndex = 8;
@@ -240,7 +240,7 @@
             // 
             // txtEtapaCampeonato
             // 
-            this.txtEtapaCampeonato.Location = new System.Drawing.Point(431, 293);
+            this.txtEtapaCampeonato.Location = new System.Drawing.Point(241, 328);
             this.txtEtapaCampeonato.Name = "txtEtapaCampeonato";
             this.txtEtapaCampeonato.Size = new System.Drawing.Size(238, 20);
             this.txtEtapaCampeonato.TabIndex = 9;
@@ -250,7 +250,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(224)))), ((int)(((byte)(48)))));
-            this.label8.Location = new System.Drawing.Point(234, 326);
+            this.label8.Location = new System.Drawing.Point(44, 361);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(68, 28);
             this.label8.TabIndex = 8;
@@ -258,7 +258,7 @@
             // 
             // txtGrupo
             // 
-            this.txtGrupo.Location = new System.Drawing.Point(431, 331);
+            this.txtGrupo.Location = new System.Drawing.Point(241, 366);
             this.txtGrupo.Name = "txtGrupo";
             this.txtGrupo.Size = new System.Drawing.Size(238, 20);
             this.txtGrupo.TabIndex = 9;

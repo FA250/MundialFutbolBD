@@ -33,5 +33,11 @@ namespace MundialFutbolBD
             frmCRUDPartidos Partidos = new frmCRUDPartidos();
             Partidos.Show();
         }
+
+        private void btnDiccionarioDatos_Click(object sender, EventArgs e)
+        {
+            frmDiccionarioDatos DD = new frmDiccionarioDatos();
+            DD.Show();
+        }
     }
 }
