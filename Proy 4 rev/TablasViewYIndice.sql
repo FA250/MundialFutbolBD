@@ -23,3 +23,24 @@ on partido.numero_partido=eq2.PARTIDO
 ORDER BY partido.NUMERO_PARTIDO
 ;
 
+create view VistaEquipos as
+select 
+COD_EQUIPO COD_EQUIPO,
+NOMBRE_PAIS,
+CONFEDERACION.NOMBRE Confedderacion,
+PASAPORTE PASAPORTE,
+pers.NOMBRE,
+apellido1 APELLIDO1,
+apellido2 APELLIDO2,
+Funcion FUNCION from EQUIPO inner join CONFEDERACION on EQUIPO.COD_CONFEDERACION = CONFEDERACION.CODIGO
+inner join(
+select Persona.PASAPORTE,nombre,apellido1,apellido2,COD_EQUIPO,'Jugador' as Funcion from Persona inner join Jugador on Jugador.PASAPORTE= Persona.PASAPORTE
+union
+select Persona.PASAPORTE,nombre,apellido1,apellido2,COD_EQUIPO,'Entrenador' as Funcion from Persona inner join Entrenador on Entrenador.PASAPORTE= Persona.PASAPORTE
+union
+select Persona.PASAPORTE,nombre,apellido1,apellido2,COD_EQUIPO,'Federativo' as Funcion from Persona inner join Federativo on Federativo.PASAPORTE= Persona.PASAPORTE
+union
+select Persona.PASAPORTE,nombre,apellido1,apellido2,COD_EQUIPO,'Asistente' as Funcion from Persona inner join Asistente on Asistente.PASAPORTE= Persona.PASAPORTE
+) pers on EQUIPO.Cod_pais=pers.COD_EQUIPO
+ORDER BY COD_EQUIPO,Funcion
+;
