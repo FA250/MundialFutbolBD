@@ -42,7 +42,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(224)))), ((int)(((byte)(48)))));
-            this.label1.Location = new System.Drawing.Point(9, 20);
+            this.label1.Location = new System.Drawing.Point(9, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 28);
             this.label1.TabIndex = 0;
@@ -57,7 +57,7 @@
             "Grupos y Clasificaciones",
             "Tabla Posiciones",
             "Tabla Goleadores"});
-            this.cmbTipoReporte.Location = new System.Drawing.Point(94, 20);
+            this.cmbTipoReporte.Location = new System.Drawing.Point(94, 21);
             this.cmbTipoReporte.Name = "cmbTipoReporte";
             this.cmbTipoReporte.Size = new System.Drawing.Size(207, 21);
             this.cmbTipoReporte.TabIndex = 1;
@@ -66,18 +66,18 @@
             // lbOpReporte
             // 
             this.lbOpReporte.AutoSize = true;
-            this.lbOpReporte.Font = new System.Drawing.Font("Minion Pro", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbOpReporte.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbOpReporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(224)))), ((int)(((byte)(48)))));
-            this.lbOpReporte.Location = new System.Drawing.Point(326, 20);
+            this.lbOpReporte.Location = new System.Drawing.Point(326, 18);
             this.lbOpReporte.Name = "lbOpReporte";
-            this.lbOpReporte.Size = new System.Drawing.Size(125, 26);
+            this.lbOpReporte.Size = new System.Drawing.Size(137, 28);
             this.lbOpReporte.TabIndex = 2;
             this.lbOpReporte.Text = "Confederación";
             // 
             // cmbOpReporte
             // 
             this.cmbOpReporte.FormattingEnabled = true;
-            this.cmbOpReporte.Location = new System.Drawing.Point(457, 20);
+            this.cmbOpReporte.Location = new System.Drawing.Point(463, 21);
             this.cmbOpReporte.Name = "cmbOpReporte";
             this.cmbOpReporte.Size = new System.Drawing.Size(193, 21);
             this.cmbOpReporte.TabIndex = 3;

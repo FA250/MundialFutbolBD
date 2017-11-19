@@ -62,6 +62,7 @@
             this.btnEquipos.TabIndex = 7;
             this.btnEquipos.Text = "CRUD Equipos";
             this.btnEquipos.UseVisualStyleBackColor = false;
+            this.btnEquipos.Click += new System.EventHandler(this.btnEquipos_Click);
             // 
             // btnReportes
             // 

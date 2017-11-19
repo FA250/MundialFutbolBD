@@ -64,9 +64,8 @@ namespace MundialFutbolBD
 
                 DataTable Table = new DataTable();
                 DataRow Reglon;
-                ArrayList tuplas = null;
+                ArrayList tuplas =  MD.Select_Tabla_Posiciones();
 
-                tuplas = MD.Select_Tabla_Posiciones();
                 Table.Columns.Add(new DataColumn("Posición"));
                 Table.Columns.Add(new DataColumn("Equipo"));
                 Table.Columns.Add(new DataColumn("Puntos"));

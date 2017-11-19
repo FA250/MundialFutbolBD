@@ -513,5 +513,38 @@ namespace MundialFutbolBD.BD
 
             return tuplas;//devuelve los datos necesarios
         }
+
+        //---------------- Seleccionar mostrar datos de las personas de los equipos ----------------
+        public ArrayList Select_Personas_Equipo(String Equipo, String Persona)
+        {
+            ArrayList tuplas = new ArrayList();
+            ArrayList atributos = new ArrayList();
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "select Pasaporte,Nombre,Apellido1,Apellido2 from vistaequipos where FUNCION='"+Persona+"' and nombre_pais='"+Equipo+"'";
+
+            conexion.annadir_consulta(consulta);
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            //Buscar los campos solicitados
+            while (Contenedor.Read())
+            {
+                atributos.Add(Contenedor["Pasaporte"].ToString());
+                atributos.Add(Contenedor["Nombre"].ToString());
+                atributos.Add(Contenedor["Apellido1"].ToString());
+                atributos.Add(Contenedor["Apellido2"].ToString());
+
+                tuplas.Add(atributos);
+                atributos = new ArrayList();
+            }//CONTENEDOR READ
+
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados
+
+            return tuplas;//devuelve los datos necesarios
+        }
     }
 }

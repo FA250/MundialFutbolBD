@@ -57,11 +57,11 @@
             this.btnMostrarPartidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMostrarPartidos.Font = new System.Drawing.Font("Minion Pro", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMostrarPartidos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(224)))), ((int)(((byte)(48)))));
-            this.btnMostrarPartidos.Location = new System.Drawing.Point(809, 12);
+            this.btnMostrarPartidos.Location = new System.Drawing.Point(12, 12);
             this.btnMostrarPartidos.Name = "btnMostrarPartidos";
-            this.btnMostrarPartidos.Size = new System.Drawing.Size(159, 33);
+            this.btnMostrarPartidos.Size = new System.Drawing.Size(207, 33);
             this.btnMostrarPartidos.TabIndex = 6;
-            this.btnMostrarPartidos.Text = "Mostrar Partidos";
+            this.btnMostrarPartidos.Text = "Mostrar Datos Partidos";
             this.btnMostrarPartidos.UseVisualStyleBackColor = false;
             // 
             // btnVerificar
