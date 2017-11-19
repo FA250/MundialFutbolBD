@@ -658,7 +658,119 @@ namespace MundialFutbolBD.BD
             Contenedor.Close();//Cierra contenedor con los datos seleccionados            
         }
 
+        //---------------- Seleccionar partido para verificar si existe ----------------
+        public ArrayList Select_Existe_Partido(String Partido)
+        {
+            ArrayList atributos = new ArrayList();
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
 
-       
+
+            consulta = "select * from partido where Numero_Partido='" + Partido + "'";
+
+            conexion.annadir_consulta(consulta);
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            //Buscar los campos solicitados
+            while (Contenedor.Read())
+            {
+                atributos.Add(Contenedor["Numero_Partido"].ToString());
+                atributos.Add(Contenedor["Fecha"].ToString().Split(' ')[0]);
+                atributos.Add(Contenedor["Hora"].ToString());
+                atributos.Add(Contenedor["Ganador"].ToString());
+                atributos.Add(Contenedor["Cantidad_aficionados"].ToString());
+                atributos.Add(Contenedor["Nombre_sede"].ToString());
+                atributos.Add(Contenedor["Etapa_campeonato"].ToString());
+                atributos.Add(Contenedor["Grupo"].ToString());
+
+            }//CONTENEDOR READ
+
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados
+
+            return atributos;//devuelve los datos necesarios
+        }
+
+        //---------------- Insertar partido nuevo ----------------
+        public bool Insert_Partido(String Numero_partido, String Fecha, String Hora,String Ganador,String Cantidad_Aficionados,String Nombre_Sede,String Etapa_Campeonato, String Grupo)
+        {
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "INSERT INTO PARTIDO (NUMERO_PARTIDO, FECHA, HORA, GANADOR, CANTIDAD_AFICIONADOS, NOMBRE_SEDE, ETAPA_CAMPEONATO, GRUPO) VALUES ("+Numero_partido+", to_date('" + Fecha + "', 'DD/MM/RR'), " + Hora + ", '" + Ganador + "', " + Cantidad_Aficionados + ", '" + Nombre_Sede + "', '" + Etapa_Campeonato + "', '" + Grupo + "')";
+
+            conexion.annadir_consulta(consulta);
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            if (Contenedor == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+
+                while (Contenedor.Read()) { }//CONTENEDOR READ
+            }
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados            
+        }
+
+        //---------------- Eliminar Partido ----------------
+        public bool Delete_Partido(String Numero_Partido)
+        {
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "Delete Partido where NUMERO_PARTIDO=" + Numero_Partido ;
+
+            conexion.annadir_consulta(consulta);
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            if (Contenedor == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+
+                while (Contenedor.Read()) { }//CONTENEDOR READ
+            }
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados            
+        }
+
+        //---------------- Actualizar Partido ----------------
+        public bool Update_Partido(String Numero_partido, String Fecha, String Hora, String Ganador, String Cantidad_Aficionados, String Nombre_Sede, String Etapa_Campeonato, String Grupo)
+        {
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "Update Partido set Fecha= to_date('" + Fecha + "', 'DD/MM/RR'), Hora= " + Hora + ", Ganador='" + Ganador + "', Cantidad_Aficionados=" + Cantidad_Aficionados + ", Nombre_Sede='" + Nombre_Sede + "', Etapa_Campeonato='" + Etapa_Campeonato + "', Grupo='" + Grupo + "' where NUMERO_PARTIDO='" + Numero_partido + "'";
+
+            conexion.annadir_consulta(consulta);
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            if (Contenedor == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+
+                while (Contenedor.Read()) { }//CONTENEDOR READ
+            }
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados            
+        }
     }
 }
