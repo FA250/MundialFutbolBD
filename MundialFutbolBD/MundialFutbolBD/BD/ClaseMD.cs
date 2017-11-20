@@ -1030,7 +1030,7 @@ namespace MundialFutbolBD.BD
 
             //Buscar los campos solicitados
             while (Contenedor.Read())
-            {
+            
                 atributos.Add(Contenedor["Nombre_pais"].ToString());
                 atributos.Add(Contenedor["Entra"].ToString());
                 atributos.Add(Contenedor["MINUTO_CAMBIO"].ToString());
