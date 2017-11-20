@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,17 @@ namespace MundialFutbolBD
         private void frmInicio_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            //get current folderpath of the .exe
+            string ProgramPath = AppDomain.CurrentDomain.BaseDirectory;
+            //jump back relative to the .exe-Path to the Resources Path
+            string FileName = string.Format("{0}Resources\\manual_de_usuario_campeonato_mundial.pdf", Path.GetFullPath(Path.Combine(ProgramPath, @"..\..\")));
+
+            //Open PDF
+            System.Diagnostics.Process.Start(@"" + FileName + "");
         }
     }
 }

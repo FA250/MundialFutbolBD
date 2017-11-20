@@ -107,7 +107,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmMostrarPartidos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MostrarPartidos";
+            this.Text = "Mostrar Partidos";
             this.Load += new System.EventHandler(this.MostrarPartidos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultado)).EndInit();
             this.ResumeLayout(false);
