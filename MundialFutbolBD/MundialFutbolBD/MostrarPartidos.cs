@@ -101,11 +101,9 @@ namespace MundialFutbolBD
 
 
                  Table.Columns.Add(new DataColumn("Nombre Equipo"));
-                 Table.Columns.Add(new DataColumn("Pasaporte Jugador"));
-                 Table.Columns.Add(new DataColumn("Nombre Jugador"));
-                 Table.Columns.Add(new DataColumn("Apellido Jugador"));
-                 Table.Columns.Add(new DataColumn("Minuto Entrada"));
-                 Table.Columns.Add(new DataColumn("Minuto Salida"));
+                 Table.Columns.Add(new DataColumn("Pasaporte Jugador Sale"));
+                 Table.Columns.Add(new DataColumn("Minuto Cambio"));
+                 Table.Columns.Add(new DataColumn("Pasaporte Jugador Entra"));
              }
             //Infracciones
             else if (cmbOpMostrar.SelectedIndex == 5)

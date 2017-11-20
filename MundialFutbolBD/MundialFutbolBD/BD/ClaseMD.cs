@@ -509,7 +509,7 @@ namespace MundialFutbolBD.BD
             System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
 
 
-            consulta = "select Nombre_pais,sum(Puntos) as Puntos,sum(PJ) as PJ,sum(PG) as PG,sum(PE) as PE,sum(PP) as PP, sum(GF) as GF,sum(GC) as GC, sum(GF) - sum(GC) as Dif from ((select E.Nombre_Pais,Sum(VP1.PUNTOS_1) as Puntos, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 ) as PJ, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 and vp2.Ganador=VP1.Equipo_1) as PG, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 and vp2.Ganador='XXX') as PE, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 and vp2.Ganador!='XXX'and vp2.Ganador!=VP1.Equipo_1) as PP, sum(VP1.NGOLES_1) as GF, sum(VP1.NGOLES_2) as GC from VISTAPARTIDOS VP1 join Equipo E on VP1.EQUIPO_1=E.COD_PAIS GROUP BY E.Nombre_Pais,VP1.EQUIPO_1) Union (select E.Nombre_Pais,Sum(VP1.PUNTOS_2) as Puntos, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 ) as PJ, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 and vp2.Ganador=VP1.Equipo_2) as PG, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 and vp2.Ganador='XXX') as PE, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 and vp2.Ganador!='XXX' and vp2.Ganador!=VP1.Equipo_2) as PP, sum(VP1.NGOLES_2) as GF, sum(VP1.NGOLES_1) as GC from VISTAPARTIDOS VP1 join Equipo E on VP1.EQUIPO_2=E.COD_PAIS GROUP BY E.Nombre_Pais,VP1.EQUIPO_2)) GROUP BY Nombre_Pais Order By Puntos desc, DIF desc, GF desc, Nombre_pais";
+            consulta = "select Nombre_pais,sum(Puntos) as Puntos,sum(PJ) as PJ,sum(PG) as PG,sum(PE) as PE,sum(PP) as PP, sum(GF) as GF,sum(GC) as GC, sum(GF) - sum(GC) as Dif from ((select E.Nombre_Pais,Sum(VP1.PUNTOS_1) as Puntos, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 ) as PJ, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 and vp2.Ganador=VP1.Equipo_1) as PG, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 and vp2.Ganador='XXX') as PE, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_1=VP1.Equipo_1 and vp2.Ganador!='XXX'and vp2.Ganador!=VP1.Equipo_1) as PP, sum(VP1.NGOLES_1) as GF, sum(VP1.NGOLES_2) as GC from VISTAPARTIDOS VP1 join Equipo E on VP1.EQUIPO_1=E.COD_PAIS GROUP BY E.Nombre_Pais,VP1.EQUIPO_1) Union (select E.Nombre_Pais,Sum(VP1.PUNTOS_2) as Puntos, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 ) as PJ, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 and vp2.Ganador=VP1.Equipo_2) as PG, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 and vp2.Ganador='XXX') as PE, (select count(vp2.Ganador) as PGS from VISTAPARTIDOS vp2 where vp2.Equipo_2=VP1.Equipo_2 and vp2.Ganador!='XXX' and vp2.Ganador!=VP1.Equipo_2) as PP, sum(VP1.NGOLES_2) as GF, sum(VP1.NGOLES_1) as GC from VISTAPARTIDOS VP1 join Equipo E on VP1.EQUIPO_2=E.COD_PAIS GROUP BY E.Nombre_Pais,VP1.EQUIPO_2)) GROUP BY Nombre_Pais Order By PJ desc,Puntos desc, DIF desc, GF desc, Nombre_pais";
 
             conexion.annadir_consulta(consulta);
             Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
@@ -816,7 +816,7 @@ namespace MundialFutbolBD.BD
             while (Contenedor.Read())
             {
                 atributos.Add(Contenedor["COD_Equipo"].ToString());
-                atributos.Add(Contenedor["Nombre_Pais"].ToString().Split(' ')[0]);
+                atributos.Add(Contenedor["Nombre_Pais"].ToString());
                 atributos.Add(Contenedor["Cant_goles"].ToString());
 
                 tuplas.Add(atributos);
@@ -883,7 +883,7 @@ namespace MundialFutbolBD.BD
             while (Contenedor.Read())
             {
                 atributos.Add(Contenedor["Nombre_pais"].ToString());
-                atributos.Add(Contenedor["Pasaporte"].ToString().Split(' ')[0]);
+                atributos.Add(Contenedor["Pasaporte"].ToString());
                 atributos.Add(Contenedor["Nombre"].ToString());
                 atributos.Add(Contenedor["Apellido1"].ToString());
 
@@ -917,7 +917,7 @@ namespace MundialFutbolBD.BD
             while (Contenedor.Read())
             {
                 atributos.Add(Contenedor["Cod_Equipo"].ToString());
-                atributos.Add(Contenedor["Nombre_Pais"].ToString().Split(' ')[0]);
+                atributos.Add(Contenedor["Nombre_Pais"].ToString());
                 atributos.Add(Contenedor["Minuto_Gol"].ToString());
                 
                 tuplas.Add(atributos);
@@ -950,7 +950,7 @@ namespace MundialFutbolBD.BD
             while (Contenedor.Read())
             {
                 atributos.Add(Contenedor["Nombre_pais"].ToString());
-                atributos.Add(Contenedor["Pasaporte"].ToString().Split(' ')[0]);
+                atributos.Add(Contenedor["Pasaporte"].ToString());
                 atributos.Add(Contenedor["Nombre"].ToString());
                 atributos.Add(Contenedor["Apellido1"].ToString());
                 atributos.Add(Contenedor["MINUTO_INFRACCION_AMARILLA"].ToString());
@@ -986,7 +986,7 @@ namespace MundialFutbolBD.BD
             while (Contenedor.Read())
             {
                 atributos.Add(Contenedor["Fecha"].ToString());
-                atributos.Add(Contenedor["Hora"].ToString().Split(' ')[0]);
+                atributos.Add(Contenedor["Hora"].ToString());
                 atributos.Add(Contenedor["Etapa_campeonato"].ToString());
                 atributos.Add(Contenedor["Grupo"].ToString());
                 atributos.Add(Contenedor["Nombre_Estadio"].ToString());
@@ -1023,7 +1023,7 @@ namespace MundialFutbolBD.BD
             System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
 
 
-            consulta = "select Nombre_pais,Pasaporte,Nombre,Apellido1, MINUTO_CAMBIO_ENTRADA,MINUTO_CAMBIO_SALIDA from VISTAEQUIPOSXPARTIDOS where Partido="+Partido+" and (MINUTO_CAMBIO_ENTRADA is not null or MINUTO_CAMBIO_SALIDA is not null)";
+            consulta = "select Nombre_pais, Entra,MINUTO_CAMBIO,Sale from VISTAEQUIPOSXPARTIDOS where Partido=1 and MINUTO_CAMBIO is not null group by Nombre_pais, Entra,MINUTO_CAMBIO,Sale";
 
             conexion.annadir_consulta(consulta);
             Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
@@ -1032,11 +1032,9 @@ namespace MundialFutbolBD.BD
             while (Contenedor.Read())
             {
                 atributos.Add(Contenedor["Nombre_pais"].ToString());
-                atributos.Add(Contenedor["Pasaporte"].ToString().Split(' ')[0]);
-                atributos.Add(Contenedor["Nombre"].ToString());
-                atributos.Add(Contenedor["Apellido1"].ToString());
-                atributos.Add(Contenedor["MINUTO_CAMBIO_ENTRADA"].ToString());
-                atributos.Add(Contenedor["MINUTO_CAMBIO_SALIDA"].ToString());
+                atributos.Add(Contenedor["Entra"].ToString());
+                atributos.Add(Contenedor["MINUTO_CAMBIO"].ToString());
+                atributos.Add(Contenedor["Sale"].ToString());
 
                 tuplas.Add(atributos);
                 atributos = new ArrayList();

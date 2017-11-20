@@ -11221,6 +11221,11 @@ insert into GOLES (PARTIDO,COD_EQUIPO,MINUTO,ANOTADOR) values (60,'NCL',105,707)
 insert into Extras_partidos(partido,tiempo_extra) values (57,30);
 insert into Extras_partidos(partido,tiempo_extra) values (60,30);
 
+Insert all
+into cambios_realizados (partido,Cod_equipo,minuto,entra,sale) values (1,'AFG',25.0,15,4)
+into cambios_realizados (partido,Cod_equipo,minuto,entra,sale) values (1,'AFG',38.0,20,3)
+SELECT 1 FROM DUAL;
+
 insert all
 into Penales (partido,numero_penal,lanzador,anotacion)values(60,1,487,'no')
 into Penales (partido,numero_penal,lanzador,anotacion)values(60,2,703,'si')
