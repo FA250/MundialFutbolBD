@@ -183,6 +183,18 @@ namespace MundialFutbolBD
                 Table.Columns.Add(new DataColumn("Puntos Equipo 2"));
                 Table.Columns.Add(new DataColumn("Goles Equipo 2"));
                 Table.Columns.Add(new DataColumn("Ganador"));
+                Table.Columns.Add(new DataColumn("Tiempo Exta"));
+                Table.Columns.Add(new DataColumn("Arbitro Principal"));
+                Table.Columns.Add(new DataColumn("Apellido AP"));
+                Table.Columns.Add(new DataColumn("Guardalineas 1"));
+                Table.Columns.Add(new DataColumn("Apellido GL1"));
+                Table.Columns.Add(new DataColumn("Guardalineas 2"));
+                Table.Columns.Add(new DataColumn("Apellido GL2"));
+                Table.Columns.Add(new DataColumn("Arbitro 4"));
+                Table.Columns.Add(new DataColumn("Apellido A4"));
+                Table.Columns.Add(new DataColumn("Arbitro 5"));
+                Table.Columns.Add(new DataColumn("Apellido A5"));
+
             }
             else if (cmbTipoReporte.SelectedIndex == 2)
             {

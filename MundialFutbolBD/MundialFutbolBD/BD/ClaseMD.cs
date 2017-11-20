@@ -421,6 +421,17 @@ namespace MundialFutbolBD.BD
                 atributos.Add(Contenedor["PUNTOS_2"].ToString());
                 atributos.Add(Contenedor["NGOLES_2"].ToString());
                 atributos.Add(Contenedor["GANADOR"].ToString());
+                atributos.Add(Contenedor["MIN_TEMPO_EXTRA"].ToString());
+                atributos.Add(Contenedor["ARB_PRINCIPAL"].ToString());
+                atributos.Add(Contenedor["APELLIDO_AP"].ToString());
+                atributos.Add(Contenedor["ARB_GUARDALINEAS1"].ToString());
+                atributos.Add(Contenedor["APELLIDO_GL1"].ToString());
+                atributos.Add(Contenedor["ARB_GUARDALINEAS2"].ToString());
+                atributos.Add(Contenedor["APELLIDO_GL2"].ToString());
+                atributos.Add(Contenedor["ARB_4"].ToString());
+                atributos.Add(Contenedor["APELLIDO_A4"].ToString());
+                atributos.Add(Contenedor["ARB_5"].ToString());
+                atributos.Add(Contenedor["APELLIDO_A5"].ToString());
 
 
                 tuplas.Add(atributos);
@@ -465,7 +476,18 @@ namespace MundialFutbolBD.BD
                 atributos.Add(Contenedor["PUNTOS_2"].ToString());
                 atributos.Add(Contenedor["NGOLES_2"].ToString());
                 atributos.Add(Contenedor["GANADOR"].ToString());
-
+                atributos.Add(Contenedor["MIN_TEMPO_EXTRA"].ToString());
+                atributos.Add(Contenedor["ARB_PRINCIPAL"].ToString());
+                atributos.Add(Contenedor["APELLIDO_AP"].ToString());
+                atributos.Add(Contenedor["ARB_GUARDALINEAS1"].ToString());
+                atributos.Add(Contenedor["APELLIDO_GL1"].ToString());
+                atributos.Add(Contenedor["ARB_GUARDALINEAS2"].ToString());
+                atributos.Add(Contenedor["APELLIDO_GL2"].ToString());
+                atributos.Add(Contenedor["ARB_4"].ToString());
+                atributos.Add(Contenedor["APELLIDO_A4"].ToString());
+                atributos.Add(Contenedor["ARB_5"].ToString());
+                atributos.Add(Contenedor["APELLIDO_A5"].ToString());
+                
 
                 tuplas.Add(atributos);
                 atributos = new ArrayList();
@@ -771,6 +793,258 @@ namespace MundialFutbolBD.BD
                 while (Contenedor.Read()) { }//CONTENEDOR READ
             }
             Contenedor.Close();//Cierra contenedor con los datos seleccionados            
+        }
+
+        //---------------- Seleccionar equipos de un partido con sus goles ----------------
+        public ArrayList Select_Equipos_de_Partido(String Partido)
+        {
+            ArrayList tuplas = new ArrayList();
+            ArrayList atributos = new ArrayList();
+            
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "select VP.Cod_equipo, VP.Nombre_pais,(select count(cod_equipo) from Goles where Goles.cod_equipo=VP.Cod_equipo and Goles.PARTIDO=" + Partido + ") as Cant_Goles  from VISTAEQUIPOSXPARTIDOS VP where VP.Partido=" + Partido + " group by VP.COD_EQUIPO,VP.Nombre_pais";
+
+            conexion.annadir_consulta(consulta);
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            //Buscar los campos solicitados
+            while (Contenedor.Read())
+            {
+                atributos.Add(Contenedor["COD_Equipo"].ToString());
+                atributos.Add(Contenedor["Nombre_Pais"].ToString().Split(' ')[0]);
+                atributos.Add(Contenedor["Cant_goles"].ToString());
+
+                tuplas.Add(atributos);
+                atributos = new ArrayList();
+            }//CONTENEDOR READ
+
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados
+
+            return tuplas;//devuelve los datos necesarios
+        }
+
+        //---------------- Seleccionar los jugadores titulares de un partido ----------------
+        public ArrayList Select_Jugadores_Titulares(String Partido)
+        {
+            ArrayList tuplas = new ArrayList();
+            ArrayList atributos = new ArrayList();
+
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "select Nombre_pais,Pasaporte,Nombre,Apellido1 from VISTAEQUIPOSXPARTIDOS where Funcion='Titular' and Partido=" + Partido;
+
+            conexion.annadir_consulta(consulta);
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            //Buscar los campos solicitados
+            while (Contenedor.Read())
+            {
+                atributos.Add(Contenedor["Nombre_pais"].ToString());
+                atributos.Add(Contenedor["Pasaporte"].ToString().Split(' ')[0]);
+                atributos.Add(Contenedor["Nombre"].ToString());
+                atributos.Add(Contenedor["Apellido1"].ToString());
+
+                tuplas.Add(atributos);
+                atributos = new ArrayList();
+            }//CONTENEDOR READ
+
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados
+
+            return tuplas;//devuelve los datos necesarios
+        }
+
+        //---------------- Seleccionar los jugadores suplentes de un partido ----------------
+        public ArrayList Select_Jugadores_Suplentes(String Partido)
+        {
+            ArrayList tuplas = new ArrayList();
+            ArrayList atributos = new ArrayList();
+
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "select Nombre_pais,Pasaporte,Nombre,Apellido1 from VISTAEQUIPOSXPARTIDOS where Funcion='Suplente' and Partido=" + Partido;
+
+            conexion.annadir_consulta(consulta);
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            //Buscar los campos solicitados
+            while (Contenedor.Read())
+            {
+                atributos.Add(Contenedor["Nombre_pais"].ToString());
+                atributos.Add(Contenedor["Pasaporte"].ToString().Split(' ')[0]);
+                atributos.Add(Contenedor["Nombre"].ToString());
+                atributos.Add(Contenedor["Apellido1"].ToString());
+
+                tuplas.Add(atributos);
+                atributos = new ArrayList();
+            }//CONTENEDOR READ
+
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados
+
+            return tuplas;//devuelve los datos necesarios
+        }
+
+        //---------------- Seleccionar los minutos de los goles de un partido ----------------
+        public ArrayList Select_MIN_Goles_Partido(String Partido)
+        {
+            ArrayList tuplas = new ArrayList();
+            ArrayList atributos = new ArrayList();
+
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "select COD_Equipo,Nombre_pais,Minuto_Gol from VISTAEQUIPOSXPARTIDOS where Partido="+ Partido+" and Minuto_Gol is not null Order by Minuto_gol";
+
+            conexion.annadir_consulta(consulta);
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            //Buscar los campos solicitados
+            while (Contenedor.Read())
+            {
+                atributos.Add(Contenedor["Cod_Equipo"].ToString());
+                atributos.Add(Contenedor["Nombre_Pais"].ToString().Split(' ')[0]);
+                atributos.Add(Contenedor["Minuto_Gol"].ToString());
+                
+                tuplas.Add(atributos);
+                atributos = new ArrayList();
+            }//CONTENEDOR READ
+
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados
+
+            return tuplas;//devuelve los datos necesarios
+        }
+
+        //---------------- Seleccionar los minutos de las infracciones de un partido ----------------
+        public ArrayList Select_MIN_Infracciones_Partido(String Partido)
+        {
+            ArrayList tuplas = new ArrayList();
+            ArrayList atributos = new ArrayList();
+
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "select Nombre_pais,Pasaporte,Nombre,Apellido1, MINUTO_INFRACCION_AMARILLA,MINUTO_INFRACCION_ROJA from VISTAEQUIPOSXPARTIDOS where Partido="+Partido+" and (MINUTO_INFRACCION_AMARILLA is not null or MINUTO_INFRACCION_ROJA is not null)";
+
+            conexion.annadir_consulta(consulta);
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            //Buscar los campos solicitados
+            while (Contenedor.Read())
+            {
+                atributos.Add(Contenedor["Nombre_pais"].ToString());
+                atributos.Add(Contenedor["Pasaporte"].ToString().Split(' ')[0]);
+                atributos.Add(Contenedor["Nombre"].ToString());
+                atributos.Add(Contenedor["Apellido1"].ToString());
+                atributos.Add(Contenedor["MINUTO_INFRACCION_AMARILLA"].ToString());
+                atributos.Add(Contenedor["MINUTO_INFRACCION_ROJA"].ToString());
+
+                tuplas.Add(atributos);
+                atributos = new ArrayList();
+            }//CONTENEDOR READ
+
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados
+
+            return tuplas;//devuelve los datos necesarios
+        }
+
+        //---------------- Seleccionar otros datos de un partido ----------------
+        public ArrayList Select_Otros_Datos_Partido(String Partido)
+        {
+            ArrayList tuplas = new ArrayList();
+            ArrayList atributos = new ArrayList();
+
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "select Fecha,Hora,Etapa_campeonato,Grupo,Nombre_Estadio,Cantidad_Aficionados,Min_Tempo_Extra,Arb_principal,Apellido_AP,ARB_GuardaLineas1,Apellido_GL1,ARB_GuardaLineas2,Apellido_GL2,Arb_4,Apellido_A4,Arb_5,Apellido_A5 from vistaPartidos where numero_partido="+Partido;
+
+            conexion.annadir_consulta(consulta);
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            //Buscar los campos solicitados
+            while (Contenedor.Read())
+            {
+                atributos.Add(Contenedor["Fecha"].ToString());
+                atributos.Add(Contenedor["Hora"].ToString().Split(' ')[0]);
+                atributos.Add(Contenedor["Etapa_campeonato"].ToString());
+                atributos.Add(Contenedor["Grupo"].ToString());
+                atributos.Add(Contenedor["Nombre_Estadio"].ToString());
+                atributos.Add(Contenedor["Cantidad_Aficionados"].ToString());
+                atributos.Add(Contenedor["Min_Tempo_Extra"].ToString());
+                atributos.Add(Contenedor["Arb_principal"].ToString());
+                atributos.Add(Contenedor["Apellido_AP"].ToString());
+                atributos.Add(Contenedor["ARB_GuardaLineas1"].ToString());
+                atributos.Add(Contenedor["Apellido_GL1"].ToString());
+                atributos.Add(Contenedor["ARB_GuardaLineas2"].ToString());
+                atributos.Add(Contenedor["Apellido_GL2"].ToString());
+                atributos.Add(Contenedor["Arb_4"].ToString());
+                atributos.Add(Contenedor["Apellido_A4"].ToString());
+                atributos.Add(Contenedor["Arb_5"].ToString());
+                atributos.Add(Contenedor["Apellido_A5"].ToString());
+
+                tuplas.Add(atributos);
+                atributos = new ArrayList();
+            }//CONTENEDOR READ
+
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados
+
+            return tuplas;//devuelve los datos necesarios
+        }
+        //---------------- Seleccionar los minutos de los cambios de un partido ----------------
+        public ArrayList Select_Cambios_Partido(String Partido)
+        {
+            ArrayList tuplas = new ArrayList();
+            ArrayList atributos = new ArrayList();
+
+            conexion.parametro("", "", "", "");
+            conexion.inicializa();
+            String consulta;
+            System.Data.OleDb.OleDbDataReader Contenedor;//crea un contenedor de la base de datos
+
+
+            consulta = "select Nombre_pais,Pasaporte,Nombre,Apellido1, MINUTO_CAMBIO_ENTRADA,MINUTO_CAMBIO_SALIDA from VISTAEQUIPOSXPARTIDOS where Partido="+Partido+" and (MINUTO_CAMBIO_ENTRADA is not null or MINUTO_CAMBIO_SALIDA is not null)";
+
+            conexion.annadir_consulta(consulta);
+            Contenedor = conexion.busca(); //BUSCA EJECUTA EL SQL QUE LE DIMOS ARRIBA A LA VARIABLE CONEXION
+
+            //Buscar los campos solicitados
+            while (Contenedor.Read())
+            {
+                atributos.Add(Contenedor["Nombre_pais"].ToString());
+                atributos.Add(Contenedor["Pasaporte"].ToString().Split(' ')[0]);
+                atributos.Add(Contenedor["Nombre"].ToString());
+                atributos.Add(Contenedor["Apellido1"].ToString());
+                atributos.Add(Contenedor["MINUTO_CAMBIO_ENTRADA"].ToString());
+                atributos.Add(Contenedor["MINUTO_CAMBIO_SALIDA"].ToString());
+
+                tuplas.Add(atributos);
+                atributos = new ArrayList();
+            }//CONTENEDOR READ
+
+            Contenedor.Close();//Cierra contenedor con los datos seleccionados
+
+            return tuplas;//devuelve los datos necesarios
         }
     }
 }

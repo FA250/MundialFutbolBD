@@ -197,6 +197,12 @@ namespace MundialFutbolBD
             }
         }
 
+        private void btnMostrarPartidos_Click(object sender, EventArgs e)
+        {
+            frmMostrarPartidos Partidos = new frmMostrarPartidos();
+            Partidos.Show();
+        }
+
 
     }
 }

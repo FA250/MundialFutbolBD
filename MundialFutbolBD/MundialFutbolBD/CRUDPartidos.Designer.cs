@@ -63,6 +63,7 @@
             this.btnMostrarPartidos.TabIndex = 6;
             this.btnMostrarPartidos.Text = "Mostrar Datos Partidos";
             this.btnMostrarPartidos.UseVisualStyleBackColor = false;
+            this.btnMostrarPartidos.Click += new System.EventHandler(this.btnMostrarPartidos_Click);
             // 
             // btnVerificar
             // 

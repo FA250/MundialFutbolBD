@@ -1,6 +1,6 @@
 ﻿namespace MundialFutbolBD
 {
-    partial class MostrarPartidos
+    partial class frmMostrarPartidos
     {
         /// <summary>
         /// Required designer variable.
@@ -52,6 +52,7 @@
             this.cmbPartido.Name = "cmbPartido";
             this.cmbPartido.Size = new System.Drawing.Size(207, 21);
             this.cmbPartido.TabIndex = 9;
+            this.cmbPartido.SelectedIndexChanged += new System.EventHandler(this.cmbPartido_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -80,14 +81,20 @@
             this.cmbOpMostrar.Enabled = false;
             this.cmbOpMostrar.FormattingEnabled = true;
             this.cmbOpMostrar.Items.AddRange(new object[] {
+            "Equipos con goles",
             "Jugadores Titular",
-            "Jugador Suplente"});
+            "Jugadores Suplente",
+            "Minutos de Goles",
+            "Cambios",
+            "Minutos de Infracciones",
+            "Otros datos del partido"});
             this.cmbOpMostrar.Location = new System.Drawing.Point(413, 18);
             this.cmbOpMostrar.Name = "cmbOpMostrar";
             this.cmbOpMostrar.Size = new System.Drawing.Size(207, 21);
             this.cmbOpMostrar.TabIndex = 8;
+            this.cmbOpMostrar.SelectedIndexChanged += new System.EventHandler(this.cmbOpMostrar_SelectedIndexChanged);
             // 
-            // MostrarPartidos
+            // frmMostrarPartidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -98,9 +105,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbPartido);
             this.Controls.Add(this.label1);
-            this.Name = "MostrarPartidos";
+            this.Name = "frmMostrarPartidos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MostrarPartidos";
+            this.Load += new System.EventHandler(this.MostrarPartidos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
