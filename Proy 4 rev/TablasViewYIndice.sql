@@ -71,10 +71,9 @@ PASAPORTE,
 NOMBRE,
 APELLIDO1,
 Funcion,
-ce.MINUTO Minuto_Cambio_Salida,
-ce.ENTRA,
-cs.MINUTO Minuto_Cambio_Entrada,
-cs.SALE,
+cr.ENTRA,
+cr.MINUTO Minuto_Cambio,
+cr.SALE,
 gol.MINUTO Minuto_Gol,
 ta.MINUTO Minuto_Infraccion_Amarilla,
 tr.MINUTO Minuto_Infraccion_Roja
@@ -84,10 +83,8 @@ left join
 union
 select SUPLENTES.COD_EQUIPO,SUPLENTES.PARTIDO,VistaEquipos.PASAPORTE,VistaEquipos.NOMBRE,VistaEquipos.APELLIDO1,'Suplente' as Funcion from SUPLENTES inner join VistaEquipos on VistaEquipos.PASAPORTE=SUPLENTES.JUGADOR)jug
 on jug.COD_EQUIPO=enf.COD_EQUIPO and enf.PARTIDO = jug.PARTIDO
-left join CAMBIOS_REALIZADOS ce
-on ce.COD_EQUIPO=enf.COD_EQUIPO and enf.PARTIDO = ce.PARTIDO  and ce.SALE = jug.PASAPORTE
-left join CAMBIOS_REALIZADOS cs
-on cs.COD_EQUIPO=enf.COD_EQUIPO and enf.PARTIDO = cs.PARTIDO  and cs.ENTRA = jug.PASAPORTE
+left join CAMBIOS_REALIZADOS cr
+on cr.COD_EQUIPO=enf.COD_EQUIPO and enf.PARTIDO = cr.PARTIDO  and (cr.SALE = jug.PASAPORTE or cr.ENTRA = jug.PASAPORTE)
 left join GOLES gol 
 on gol.COD_EQUIPO=enf.COD_EQUIPO and enf.PARTIDO = gol.PARTIDO  and gol.anotador = jug.PASAPORTE
 left join TARJETAS_AMARILLAS ta 
