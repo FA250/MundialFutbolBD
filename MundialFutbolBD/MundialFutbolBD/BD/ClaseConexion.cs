@@ -20,7 +20,7 @@ namespace MundialFutbolBD.BD
         public void parametro(String bd, String ip, String nom_usuario, String clave)
         {
             //Conexion si se quiere conectar con otro servidor cambiar la opcion de Server=<nombre_servidor_nuevo>
-            strconexion = "Provider=OraOLEDB.Oracle; Data Source=localhost:1521/XE;User ID=ProyectoBD;password=12345;";
+            strconexion = "Provider=OraOLEDB.Oracle; Data Source=localhost:1521/XE;User ID=System;password=12345;";
 
         }
                 
